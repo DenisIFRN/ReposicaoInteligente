@@ -11,7 +11,7 @@ class LoginController extends Controller
 
 	public function loginForm()
 	{
-		return view('index');
+		return view('login');
 	}
 
 	public function login(Request $request)
@@ -20,14 +20,14 @@ class LoginController extends Controller
 		$matricula = $request->matricula;
 		$senha = $request->senha;
 
-		$teste = new Suap;
+		$authSuap = new Suap;
 
-		$res = $teste->autenticar($matricula, $senha);
+		$res = $authSuap->autenticar($matricula, $senha);
 
 		$request->session()->put('user', [$matricula, $senha]);
-		$lala = $request->session()->get('user');
+		$sessao = $request->session()->get('user');
 
-		return redirect()->to(route('mostrar'));
+		return redirect()->to(route('indexAluno'));
 	}
 
     public function sair()

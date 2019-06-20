@@ -15,6 +15,6 @@ Route::get('/', 'LoginController@loginForm')->name('loginForm');
 
 Route::post('/login', 'LoginController@login')->name('login');
 
-Route::get('/mostrar', 'MostrarController@mostrar')->name('mostrar');
+Route::get('/aluno', 'AlunoController@indexAluno')->name('indexAluno');
 
 Route::get('/sair', 'LoginController@sair')->name('sair');

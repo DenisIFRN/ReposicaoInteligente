@@ -1,0 +1,23 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/main.css": "/css/main.css",
+    "/js/plugins/bootstrap-datepicker.min.js": "/js/plugins/bootstrap-datepicker.min.js",
+    "/js/plugins/bootstrap-notify.min.js": "/js/plugins/bootstrap-notify.min.js",
+    "/js/plugins/chart.js": "/js/plugins/chart.js",
+    "/js/plugins/dataTables.bootstrap.min.js": "/js/plugins/dataTables.bootstrap.min.js",
+    "/js/plugins/fullcalendar.bootstrap.min.js": "/js/plugins/fullcalendar.bootstrap.min.js",
+    "/js/plugins/jquery-ui.custom.min.js": "/js/plugins/jquery-ui.custom.min.js",
+    "/js/plugins/jquery.dataTables.min.js": "/js/plugins/jquery.dataTables.min.js",
+    "/js/plugins/jquery.vmap.min.js": "/js/plugins/jquery.vmap.min.js",
+    "/js/plugins/jquery.vmap.sampledata.js": "/js/plugins/jquery.vmap.sampledata.js",
+    "/js/plugins/jquery.vmap.world.js": "/js/plugins/jquery.vmap.world.js",
+    "/js/plugins/moment.min.js": "/js/plugins/moment.min.js",
+    "/js/plugins/pace.min.js": "/js/plugins/pace.min.js",
+    "/js/plugins/select2.min.js": "/js/plugins/select2.min.js",
+    "/js/plugins/sweetalert.min.js": "/js/plugins/sweetalert.min.js",
+    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/js/jquery-3.2.1.min.js": "/js/jquery-3.2.1.min.js",
+    "/js/main.js": "/js/main.js",
+    "/js/popper.min.js": "/js/popper.min.js"
+}
