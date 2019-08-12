@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Ivmelo\SUAP\SUAP;
+use App\Requerimento;
 
 class AlunoController extends Controller
 {
@@ -28,15 +29,26 @@ class AlunoController extends Controller
 			$periodo = $periodos["periodo_letivo"];
 
 
-			$turmasVirtuais = $authSuap->getTurmasVirtuais(2019, 1);//($ano, $periodo);
-			
-			$detalheTurmas = $authSuap->getTurmaVirtual(57409);
-
-	    	//return $turmasVirtuais;
-			return $detalheTurmas;
-	    	//view('Paginas.Aluno.index', ['nome'=>$nome, 'matricula'=>$matricula, 'turmasVirtuais' =>$turmasVirtuais]);
+			$turmasVirtuais = $authSuap->getTurmasVirtuais(2019, 1);//($ano, $periodo); $detalheTurmas = $authSuap->getTurmaVirtual($turmasVirtuais[0]['id']);
+	
+            //return $turmasVirtuais;
+			return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula, 'turmasVirtuais' =>$turmasVirtuais]);
     	}else{
     		return redirect()->to(route('loginForm'));
     	}
+    }
+
+    public function salvar(Request $request){
+    	$req = new Requerimento;
+    	$req->id_aluno = $request->id_aluno;
+    	$req->id_disciplina = $request->disciplina;
+    	$req->id_docente = "1";
+    	$req->justificativa = $request->justificativa;
+    	$req->anexo = $request->anexo;
+    	$req->data = "24/07/2019";
+    	$req->status = "Avaliando";
+
+    	$req->save();
+    	return "Deu certo";
     }
 }

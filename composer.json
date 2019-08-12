@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "ivmelo/suap-api-php": "1.0.*",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "romeritocampos/suap-php-api": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -18,9 +18,9 @@ class CreateRequerimentosTable extends Migration
             $table->string('id_aluno');
             $table->string('id_disciplina');
             $table->string('id_docente');
-            $table->string('justificativa');
+            $table->text('justificativa');
             $table->string('anexo')->nullable();
-            $table->date('data');
+            $table->string('data');
             $table->string('status')->default('Aguardando_Avaliacao');
         });
     }
