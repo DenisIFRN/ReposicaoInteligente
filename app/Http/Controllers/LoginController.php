@@ -27,7 +27,26 @@ class LoginController extends Controller
 		$request->session()->put('user', [$matricula, $senha]);
 		$sessao = $request->session()->get('user');
 
-		return redirect()->to(route('indexAluno'));
+		return redirect()->to(route('auth'));
+	}
+
+	public function auth(){
+		if(Session::has('user')) {
+			$sessao = Session::get('user');
+		}else{
+			return redirect()->to(route('loginForm'));
+		}
+		try{
+			if(strlen($sessao['0']) == 14){
+				return redirect()->to(route('indexAluno'));
+			}elseif (strlen($sessao['0']) == 7) {
+				return redirect()->to(route('indexProfessor'));
+			}else{
+				return redirect()->to(route('loginForm'));
+			}
+		} catch (Exception $e) {
+			return redirect()->to(route('loginForm'));
+		}
 	}
 
     public function sair()
