@@ -14,7 +14,7 @@ class ProfessorController extends Controller
 
     	$authClient = new SuapClient;
 
-    	$res = $authClient->auth($sessao(['0']), $sessao['1']);
+    	$res = $authClient->auth($sessao['0'], $sessao['1']);
 
     	$dadosProfessor = $authClient->get("/minhas-informacoes/meus-dados/");
 

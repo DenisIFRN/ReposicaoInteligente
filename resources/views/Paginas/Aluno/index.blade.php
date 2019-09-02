@@ -3,46 +3,86 @@
 @section('conteudo')
 
 <main class="app-content">
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <div class="tile">
-              <form method="post" action="{{ route('salvar') }}">
-                {{csrf_field()}}
-                <div>
-                  <h3 >Solicitar Reposição</h3>
-                </div>
-                <input type="hidden" name="id_aluno" value="{{ $id }}">
-                <input type="hidden" name="id_docente" value="">
-                <br>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Disciplina</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="disciplina">
-                      @foreach($turmasVirtuais as $turmas)
-                        <option value="{{ $turmas['id'] }}">{{ $turmas["descricao"] }}</option>
-                      @endforeach
-                    </select>
-                  </label>
-                </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Motivo</label>
-                    <textarea name='justificativa' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+       <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="tile">
+            <h3 class="tile-title">Solicitações recebidas</h3>
+            <div>
+
+              <div id="accordion">
+                <div class="card bg-light>
+                  <div class="card-header" id="headingTwo" >
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        
+                      </button>
+                    </h5>
                   </div>
-                  <label for="exampleFormControlTextarea1">Anexar documento comprovante</label>
-                  <div class="input-group mb-3">
-                    <div class="custom-file">
-                      <input type="file" name="anexo" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Procurar arquivo...</label>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>Curso/Turma:</b>                          
+                        </div>
+
+                        <div class="col-md-6">
+                          <b>Disciplina:</b>                          
+                        </div> 
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>Anexo: </b>                       
+                        </div>
+
+                        <div class="col-md-6">
+                          <b>Data da solicitação:</b>                          
+                        </div> 
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <b>Justificativa:</b>
+                          <div class="col-md-6">
+                            KAJKJAJSDJDJDJHFHGGGGGGGGGGGGHFHHn
+                          </div>                      
+                        </div> 
+
+                        <div class="col-md-6">
+                          <button type="button" class="btn btn-outline-success pull-right" data-toggle="modal" data-target="#exampleModal"> Marcar reposição</button>
+                              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel"> Marque a reposição</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                  <div class="modal-body">
+                                    Sala: <input type="string" name=""/>
+                                    <br>
+                                    Data: <input type="date" name=""/>
+                                    <br>
+                                    Horário: <input type="time" name="appt-time"
+                                    min="7:00" max="22:00" required/>
+                                    <br>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary"> Enviar</button>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Declaro estar ciente da necessidade de apresentar documento(s) que comprove(m) a minha ausência da atividade selecionada.</label>
-                  </div><br>
-                  <button type="submit" class="btn btn-success">Enviar</button>
-                </form>
-              </div>
-            </div>
-          </div>
+                </div>
+
       </main>
 
 @endsection

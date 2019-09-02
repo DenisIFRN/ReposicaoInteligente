@@ -16,7 +16,7 @@ class AlunoController extends Controller{
 		$res = $authSuap->autenticar($sessao['0'], $sessao['1']);
 
 		$dadosAluno = $authSuap->getMeusDados();
-
+        
 		$id = $dadosAluno["id"];
 		$nome = $dadosAluno["nome_usual"];
 		$matricula = $dadosAluno["matricula"];
