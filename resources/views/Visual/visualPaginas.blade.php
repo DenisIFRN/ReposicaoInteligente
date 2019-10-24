@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-  @include('Conteudo.cabecalho')
+	@include('Conteudo.cabecalho')
 <body class="app sidebar-mini rtl">
-  @include('Conteudo.navegacao')
+	@include('Conteudo.navegacao')
 
-  @yield('conteudo')
+	@yield('conteudo')
 
-  @include('Conteudo.scripts')
-
-  </body>
+	@include('Conteudo.scripts')
+</body>
 </html>

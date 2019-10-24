@@ -19,6 +19,8 @@ Route::get('/auth', 'LoginController@auth')->name('auth');
 
 Route::get('/aluno', 'AlunoController@indexAluno')->name('indexAluno');
 
+Route::get('/solicitacao', 'AlunoController@novaSolicitacao')->name('novaSolicitacao');
+
 Route::get('/Professor', 'ProfessorController@indexProfessor')->name('indexProfessor');
 
 Route::post('/testeAluno', 'AlunoController@salvar')->name('salvar');

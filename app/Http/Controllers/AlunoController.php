@@ -4,32 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Ivmelo\SUAP\SUAP;
 use App\Requerimento;
 
 class AlunoController extends Controller{
     public function indexAluno(){
-		$sessao = Session::get('user');
+        $sessao = Session::get('user');
 
-		$authSuap = new Suap;
+        include 'credenciais.php';
 
-		$res = $authSuap->autenticar($sessao['0'], $sessao['1']);
+		return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto]);
+    }
 
-		$dadosAluno = $authSuap->getMeusDados();
+    public function novaSolicitacao(){
+
+        $sessao = Session::get('user');
+
+        include 'credenciais.php';
         
-		$id = $dadosAluno["id"];
-		$nome = $dadosAluno["nome_usual"];
-		$matricula = $dadosAluno["matricula"];
+        $periodoLetivo = $authSuap->getMeusPeriodosLetivos();
+        $periodos = end($periodoLetivo);
+        $ano = $periodos["ano_letivo"];
+        $periodo = $periodos["periodo_letivo"];
 
-		$periodoLetivo = $authSuap->getMeusPeriodosLetivos();
-		$periodos = end($periodoLetivo);
-		$ano = $periodos["ano_letivo"];
-		$periodo = $periodos["periodo_letivo"];
-
-		$turmasVirtuais = $authSuap->getTurmasVirtuais(2019, 1);//($ano, $periodo); $detalheTurmas = $authSuap->getTurmaVirtual($turmasVirtuais[0]['id']);
-	
-        //return $turmasVirtuais;
-		return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula, 'turmasVirtuais' =>$turmasVirtuais]);
+        $turmasVirtuais = $authSuap->getTurmasVirtuais(2019, 1);//($ano, $periodo); $detalheTurmas = $authSuap->getTurmaVirtual(57409);
+    
+        //return $detalheTurmas;
+        return view('Paginas.Aluno.solicitacao', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula, 'turmasVirtuais' =>$turmasVirtuais, 'foto'=>$foto]);
     }
 
     public function salvar(Request $request){

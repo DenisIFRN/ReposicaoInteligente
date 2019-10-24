@@ -4,18 +4,18 @@
 	<main class="app-content">
 		<div id="accordion">
 			<div class="tile">
-				<h3>Suas Solicitações</h3> <br>
+				<h3>Solicitações Recebidas (Secretário)</h3> <br>
 				<div class="card bg-light">
 					<div class="card-header" id="headingTwo">
 						<div class="row">
 							<div class="col-md-4">
-								Data da Solicitação
+								Nome aluno
 							</div>
 							<div class="col-md-5">
 								Motivo
 							</div>
 							<div class="col-md-3">
-								Situação
+								Data da solicitação
 							</div>
 						</div>
 					</div>
@@ -23,7 +23,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								<h5 class="mb-0">
-									<p class="btn btn-link collapsed" aria-expanded="false">03/10/2019</p>
+									<p class="btn btn-link collapsed" aria-expanded="false">Denis Soares</p>
 								</h5>
 							</div>
 							<div class="col-md-5">
@@ -33,7 +33,7 @@
 							</div>
 							<div class="col-md-2">
 								<h5 class="mb-0">
-									<p class="btn btn-link collapsed" aria-expanded="false">Deferida</p>
+									<p class="btn btn-link collapsed" aria-expanded="false">03/10/2019</p>
 								</h5>
 							</div>
 							<div class="col-md-1">
@@ -49,36 +49,52 @@
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-6">
-									<b>Curso/Turma:</b>
-									Informática/1M
+								<div class="col-md-12">
+									<div class="app-sidebar__user">
+										<img class="app-sidebar__user-avatar" src="https://suap.ifrn.edu.br{{ $foto }}" alt="Denis Soares">
+									</div>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-12">
+									<b>Curso: </b>
+									Informática
+								</div>
+								<div class="col-md-12">
+									<b>Turma:</b>
+									1M
+								</div>
+								<div class="col-md-12">
+									<b>Nome do aluno:</b>
+									Denis Silva Soares
+								</div>
+								<div class="col-md-12">
+									<b>Matrícula:</b>
+									20151104010690
+								</div>
+								<div class="col-md-12">
+									<b>Nome do Professor:</b>
+									Romerito
+								</div>
+								<div class="col-md-12">
 									<b>Disciplina:</b>
 									Projetos finais
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<b>Anexo: </b>
+								<div class="col-md-12">
+									<b>Data da solicitação:</b>
+									07/10/2019
+								</div>
+								<div class="col-md-12">
+									<b>Anexo:</b>
 									Anexo aqui
 								</div>
-								<div class="col-md-6">
-									<b>Data da solicitação:</b>
-									Dia/Mês/Ano
+								<div class="col-md-12">
+									<b>Justificativa:</b>
+									Justificativa aqui
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6">
-									<b>Justificativa:</b>
-									<div class="col-md-6">
-										Justificativa Aqui
-									</div>
-								</div>
-								<div class="col-md-6">
-									<button type="button" class="btn btn-outline-success-edit pull-right" data-toggle="modal" data-target="#exampleModalEdit">Editar</button>
-
-									<button type="button" class="btn btn-outline-success-excluir pull-right" data-toggle="modal" data-target="#exampleModal">Excluir</button>
+									<h5></h5>
+									<button type="button" class="btn btn-outline-success pull-right" data-toggle="modal" data-target="#exampleModalEdit">Avaliar Solicitação</button>
 
 									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 										<div class="modal-dialog" role="document">
