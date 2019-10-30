@@ -5,19 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Romerito\Suap\SuapClient;
-use Ivmelo\SUAP\SUAP;
 
 class ProfessorController extends Controller
 {
     public function indexProfessor(){
-    	$sessao = Session::get('user');
 
-    	$authClient = new SuapClient;
+    	if(Session::has('user')) {
+            $sessao = Session::get('user');
+        }else{
+            return redirect()->to(route('loginForm'));
+        }
 
-    	$res = $authClient->auth($sessao['0'], $sessao['1']);
+        $authClient = new SuapClient;
 
-    	$dadosProfessor = $authClient->get("/minhas-informacoes/meus-dados/");
+	    $res = $authClient->auth($sessao['0'], $sessao['1']);
 
-    	var_dump($dadosProfessor);
+	    $dadosServidor = $authClient->get("/minhas-informacoes/meus-dados/");
+
+    	//$authClient = new SuapClient;
+
+    	//$res = $authClient->auth($sessao['0'], $sessao['1']);
+
+    	//$dadosProfessor = $authClient->get("/minhas-informacoes/meus-dados/");
+
+    	//var_dump($dadosProfessor);
+
+    	//include 'CredenciaisServidor.php';
+
+    	//return view('Paginas.Professor.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto]);
+
+    	var_dump($dadosServidor);
     }
 }

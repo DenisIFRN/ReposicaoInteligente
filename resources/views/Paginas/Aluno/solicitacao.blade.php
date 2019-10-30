@@ -6,9 +6,11 @@
 		<div class="accordion">
 			<div class="tile">
 				<h3>Solicitar Reposição</h3>
-				<form method="post" action="{{ route('salvar') }}">
+				<form method="post" enctype="multipart/form-data" action="{{ route('salvar') }} ">
 					{{csrf_field()}}
+					<!-- Tirar isso daqui -->
 					<input type="hidden" name="id_aluno" value="{{ $id }}">
+					<input type="hidden" name="foto" value="{{ $foto }}">
 					<input type="hidden" name="id_docente" value="">
 					<br>
 					<div class="form-group">
@@ -26,7 +28,7 @@
 					<label for="exampleFormControlTextarea1">Anexar documento comprovante</label>
 					<div class="input-group mb-3">
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+							<input type="file" name="anexo" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
 							<label class="custom-file-label" for="inputGroupFile01">Procurar arquivo...</label>
 						</div>
 					</div>

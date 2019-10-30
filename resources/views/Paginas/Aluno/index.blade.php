@@ -6,80 +6,64 @@
 			<div class="tile">
 				<h3>Suas Solicitações</h3> <br>
 				<div class="card bg-light">
+					
 					<div class="card-header" id="headingTwo">
 						<div class="row">
 							<div class="col-md-4">
 								Data da Solicitação
 							</div>
 							<div class="col-md-5">
-								Motivo
+								Justificativa
 							</div>
 							<div class="col-md-3">
 								Situação
 							</div>
 						</div>
 					</div>
-					<div class="card-header" id="headingTwo">
-						<div class="row">
-							<div class="col-md-4">
-								<h5 class="mb-0">
-									<p class="btn btn-link collapsed" aria-expanded="false">03/10/2019</p>
-								</h5>
+					@foreach($requerimentos as $requerimento)
+						<div class="card-header" id="headingTwo">
+							<div class="row">
+								<div class="col-md-4">
+									<h5 class="mb-0">
+										<p class="btn btn-link collapsed" aria-expanded="false">{{ $requerimento->data }}</p>
+									</h5>
+								</div>
+								<div class="col-md-5">
+									<h5 class="mb-0">
+										<p class="btn btn-link collapsed" aria-expanded="false">{{ $requerimento->justificativa }}</p>
+									</h5>
+								</div>
+								<div class="col-md-2">
+									<h5 class="mb-0">
+										<p class="btn btn-link collapsed" aria-expanded="false">{{ $requerimento->status }}</p>
+									</h5>
+								</div>
+								<div class="col-md-1">
+									<h5 class="mb-0">
+										<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="app-menu__icon fa fa-chevron-circle-down"></i>
+										<span class="app-menu__label"></span>
+										</button>
+									</h5>
+								</div>
 							</div>
-							<div class="col-md-5">
-								<h5 class="mb-0">
-									<p class="btn btn-link collapsed" aria-expanded="false">Estava Doente</p>
-								</h5>
-							</div>
-							<div class="col-md-2">
-								<h5 class="mb-0">
-									<p class="btn btn-link collapsed" aria-expanded="false">Deferida</p>
-								</h5>
-							</div>
-							<div class="col-md-1">
-								<h5 class="mb-0">
-									<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="app-menu__icon fa fa-chevron-circle-down"></i>
-									<span class="app-menu__label"></span>
-									</button>
-								</h5>
-							</div>
+							
 						</div>
-						
-					</div>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-6">
-									<b>Curso/Turma:</b>
-									Informática/1M
-								</div>
-								<div class="col-md-6">
-									<b>Disciplina:</b>
-									Projetos finais
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<b>Anexo: </b>
-									Anexo aqui
-								</div>
-								<div class="col-md-6">
-									<b>Data da solicitação:</b>
-									Dia/Mês/Ano
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<b>Justificativa:</b>
-									<div class="col-md-6">
-										Justificativa Aqui
+						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="card-body">
+								<div class="row">
+									<div class="mb-0">
+										<b>Data:</b>{{ $requerimento->data }}<br>
+
+										<b>Justificativa:</b>{{ $requerimento->justificativa }}<br>
+
+										<b>Status:</b>{{ $requerimento->status }}<br>
+
+										<b>Anexo:</b>{{ $requerimento->anexo }}
+										
+										<button type="button" class="btn btn-outline-success-edit pull-right" data-toggle="modal" data-target="#exampleModalEdit">Editar</button>
+
+										<button type="button" class="btn btn-outline-success-excluir pull-right" data-toggle="modal" data-target="#exampleModal">Excluir</button>
 									</div>
-								</div>
-								<div class="col-md-6">
-									<button type="button" class="btn btn-outline-success-edit pull-right" data-toggle="modal" data-target="#exampleModalEdit">Editar</button>
-
-									<button type="button" class="btn btn-outline-success-excluir pull-right" data-toggle="modal" data-target="#exampleModal">Excluir</button>
-
 									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
@@ -89,7 +73,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Sim</button> 
-			                      					<button type="button" class="btn btn-secondary">Não</button>
+				                      				<button type="button" class="btn btn-secondary">Não</button>
 												</div>
 											</div>
 										</div>
@@ -116,7 +100,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button> 
-			                      					<button type="button" class="btn btn-secondary">Cancelar</button>
+				                      				<button type="button" class="btn btn-secondary">Cancelar</button>
 												</div>
 											</div>
 										</div>
@@ -124,7 +108,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>

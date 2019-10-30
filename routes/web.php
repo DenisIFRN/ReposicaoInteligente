@@ -19,10 +19,12 @@ Route::get('/auth', 'LoginController@auth')->name('auth');
 
 Route::get('/aluno', 'AlunoController@indexAluno')->name('indexAluno');
 
+Route::get('/secretario', 'SecretarioController@indexSecretario')->name('indexSecretario'); 
+
 Route::get('/solicitacao', 'AlunoController@novaSolicitacao')->name('novaSolicitacao');
 
-Route::get('/Professor', 'ProfessorController@indexProfessor')->name('indexProfessor');
+Route::get('/professor', 'ProfessorController@indexProfessor')->name('indexProfessor');
 
-Route::post('/testeAluno', 'AlunoController@salvar')->name('salvar');
+Route::post('/salvar', 'AlunoController@salvar')->name('salvar');
 
 Route::get('/sair', 'LoginController@sair')->name('sair');

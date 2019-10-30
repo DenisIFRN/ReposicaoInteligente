@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Ivmelo\SUAP\SUAP;
+use Romerito\Suap\SuapClient;
 
 class LoginController extends Controller
 {
@@ -20,11 +20,16 @@ class LoginController extends Controller
 		$matricula = $request->matricula;
 		$senha = $request->senha;
 
-		$authSuap = new Suap;
+		$authClient = new SuapClient;
 
-		$res = $authSuap->autenticar($matricula, $senha);
+		$res = $authClient->auth($matricula, $senha);
 
-		$request->session()->put('user', [$matricula, $senha]);
+		$dados = $authClient->get("/minhas-informacoes/meus-dados/");
+
+		$vinculo = $dados->tipo_vinculo;
+
+		$request->session()->put('user', [$matricula, $senha, $vinculo]);
+
 		$sessao = $request->session()->get('user');
 
 		return redirect()->to(route('auth'));
@@ -37,14 +42,19 @@ class LoginController extends Controller
 			return redirect()->to(route('loginForm'));
 		}
 		try{
-			if(strlen($sessao['0']) == 14){
+			if(($sessao['2']) == 'Aluno'){
 				return redirect()->to(route('indexAluno'));
-			}elseif (strlen($sessao['0']) == 7) {
+
+			}elseif (($sessao['2']) == 'Secretario') {
+				return redirect()->to(route('indexSecretario'));
+
+			}elseif (($sessao['2']) == 'Professor') {
 				return redirect()->to(route('indexProfessor'));
+
 			}else{
 				return redirect()->to(route('loginForm'));
 			}
-		} catch (Exception $e) {
+		}catch (Exception $e) {
 			return redirect()->to(route('loginForm'));
 		}
 	}
