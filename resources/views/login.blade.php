@@ -28,7 +28,7 @@
 				</div> <br>
 				<div class="form-group">
 					<label class="control-label">Senha</label>
-					<input class="form-control" type="password" placeholder="Senha" name='senha'>
+					<input class="form-control" type="text" placeholder="Senha" name='senha'>
 				</div>
 				<div class="form-group btn-container">
             		<button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>Enviar</button>

@@ -21,8 +21,13 @@ class LoginController extends Controller
 		$senha = $request->senha;
 
 		$authClient = new SuapClient;
+		
+		try{
+			$res = $authClient->auth($matricula, $senha);
 
-		$res = $authClient->auth($matricula, $senha);
+		}catch (\Exception $e) {
+			return redirect()->to(route('loginForm'));
+		}
 
 		$dados = $authClient->get("/minhas-informacoes/meus-dados/");
 
@@ -43,18 +48,18 @@ class LoginController extends Controller
 		}
 		try{
 			if(($sessao['2']) == 'Aluno'){
-				return redirect()->to(route('indexAluno'));
+				return redirect()->to(route('aluno.index'));
 
 			}elseif (($sessao['2']) == 'Secretario') {
-				return redirect()->to(route('indexSecretario'));
+				return redirect()->to(route('secretario.index'));
 
 			}elseif (($sessao['2']) == 'Professor') {
-				return redirect()->to(route('indexProfessor'));
+				return redirect()->to(route('professor.index'));
 
 			}else{
 				return redirect()->to(route('loginForm'));
 			}
-		}catch (Exception $e) {
+		}catch (\Exception $e) {
 			return redirect()->to(route('loginForm'));
 		}
 	}

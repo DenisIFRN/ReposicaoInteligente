@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Requerimento extends Model
 {
+	protected $fillable = ['justificativa', 'anexo','observacao', 'status'];
+
     public $timestamps = false;
+
+    public function tramite()
+    {
+    	return $this->hasMany(Tramite::class, 'id_requerimento');
+    }
 }

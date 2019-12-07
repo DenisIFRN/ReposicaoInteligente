@@ -8,8 +8,8 @@ $factory->define(App\Requerimento::class, function (Faker $faker) {
         'id_disciplina' => rand(),
         'id_docente' => rand(),
         'foto' => "/media/alunos/75x100/166972.jpg",
-        'justificativa' => "lalalala",
-        'anexo' => "lala.pdf",
+        'justificativa' => "JustificativaFake",
+        'anexo' => "AnexoFake.pdf",
         'data' => "29/10/2019",
         'status' => "Aguardando_Avaliacao"
     ];

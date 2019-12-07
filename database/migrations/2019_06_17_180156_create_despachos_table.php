@@ -19,7 +19,8 @@ class CreateDespachosTable extends Migration
             $table->string('avaliacao');
             $table->string('observacao');
             $table->string('local');
-            $table->string('data');
+            $table->string('data_aplicacao');
+            $table->string('data_avaliacao');
             $table->unsignedInteger('id_tramite');
 
             $table->foreign('id_tramite')->references('id')->on('tramites');

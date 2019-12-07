@@ -5,111 +5,80 @@
 		<div id="accordion">
 			<div class="tile">
 				<h3>Suas Solicitações</h3> <br>
-				<div class="card bg-light">
-					
-					<div class="card-header" id="headingTwo">
-						<div class="row">
-							<div class="col-md-4">
-								Data da Solicitação
-							</div>
-							<div class="col-md-5">
-								Justificativa
-							</div>
-							<div class="col-md-3">
-								Situação
-							</div>
-						</div>
-					</div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Data da Solicitação</th>
+					      	<th scope="col">Justificativa</th>
+					      	<th scope="col">Situação</th>
+					      	<th scope="col">Detalhar</th>
+					      	<th scope="col">Editar</th>
+					      	<th scope="col">Excluir</th>
+						</tr>
+					</thead>
 					@foreach($requerimentos as $requerimento)
-						<div class="card-header" id="headingTwo">
-							<div class="row">
-								<div class="col-md-4">
-									<h5 class="mb-0">
-										<p class="btn btn-link collapsed" aria-expanded="false">{{ $requerimento->data }}</p>
-									</h5>
-								</div>
-								<div class="col-md-5">
-									<h5 class="mb-0">
-										<p class="btn btn-link collapsed" aria-expanded="false">{{ $requerimento->justificativa }}</p>
-									</h5>
-								</div>
-								<div class="col-md-2">
-									<h5 class="mb-0">
-										<p class="btn btn-link collapsed" aria-expanded="false">{{ $requerimento->status }}</p>
-									</h5>
-								</div>
-								<div class="col-md-1">
-									<h5 class="mb-0">
-										<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="app-menu__icon fa fa-chevron-circle-down"></i>
-										<span class="app-menu__label"></span>
-										</button>
-									</h5>
+						<tbody>
+							<td>{{ $requerimento->data }}</td>
+							<td>{{ $requerimento->justificativa }}</td>
+							<td>{{ $requerimento->status }}</td>
+							<td>Detalhe</td>
+							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEdit-{{ $requerimento->id }}" data-whatever="{{ $requerimento->id }}" data-whateverjustificativa="{{ $requerimento->justificativa }}"><i class="app-menu__icon fa fa-pencil-square-o"></i><span class="app-menu__label"></span></button> </td>
+							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalExcl-{{ $requerimento->id }}"><i class="app-menu__icon fa fa-trash"></i><span class="app-menu__label"></span></button> </td>
+						</tbody>
+						<div class="modal fade" id="modalEdit-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Editar solicitação</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										<form enctype="multipart/form-data" action="{{route('aluno.update', [$requerimento->id])}}" method="POST">
+											{{ csrf_field() }}
+											{{ method_field('PUT') }}
+
+											<div class="form-group">
+												<label for="recipient-name" class="col-form-label">Justificativa:</label>
+												<select class="form-control" id="exampleFormControlSelect2" name="justificativa">
+													<option value="Problemas_de_Saúde">Problemas de Saúde</option>
+													<option value="Problemas_com_o_transporte">Problemas com o transporte</option>
+													<option value="Apresentação_ao_serviço_militar">Apresentação ao serviço militar</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="col-form-label">Anexo:</label>
+												<input type="file" name="anexo" value="{{$requerimento->anexo}}" class="form-control" id="recipient-name">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+												<button type="submit" class="btn btn-success">Enviar</button>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
-							
 						</div>
-						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-							<div class="card-body">
-								<div class="row">
-									<div class="mb-0">
-										<b>Data:</b>{{ $requerimento->data }}<br>
 
-										<b>Justificativa:</b>{{ $requerimento->justificativa }}<br>
-
-										<b>Status:</b>{{ $requerimento->status }}<br>
-
-										<b>Anexo:</b>{{ $requerimento->anexo }}
-										
-										<button type="button" class="btn btn-outline-success-edit pull-right" data-toggle="modal" data-target="#exampleModalEdit">Editar</button>
-
-										<button type="button" class="btn btn-outline-success-excluir pull-right" data-toggle="modal" data-target="#exampleModal">Excluir</button>
+						<div class="modal fade" id="modalExcl-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir esta solicitação?</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									</div>
-									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir esta solicitação?</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-primary" data-dismiss="modal">Sim</button> 
-				                      				<button type="button" class="btn btn-secondary">Não</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Editar solicitação</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												</div>
-												<div class="modal-body">
-													<label for="exampleFormControlSelect1">Anexo</label>
-													<div class="input-group mb-3">
-														<div class="custom-file">
-															<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-															<label class="custom-file-label" for="inputGroupFile01">Procurar arquivo...</label>
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="exampleFormControlTextarea1">Justificativa</label>
-														<textarea name='justificativa' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button> 
-				                      				<button type="button" class="btn btn-secondary">Cancelar</button>
-												</div>
-											</div>
-										</div>
+									<div class="modal-footer">
+										<form action="{{route('aluno.destroy', ['id' => $requerimento->id])}}" method="POST">
+											@method('DELETE')
+											@csrf
+											<input type="submit" class="btn btn-primary" value="Sim"></input>
+							                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
 					@endforeach
-				</div>
+				</table>
 			</div>
 		</div>
 	</main>

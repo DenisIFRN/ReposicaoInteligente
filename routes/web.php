@@ -17,14 +17,12 @@ Route::post('/login', 'LoginController@login')->name('login');
 
 Route::get('/auth', 'LoginController@auth')->name('auth');
 
-Route::get('/aluno', 'AlunoController@indexAluno')->name('indexAluno');
-
-Route::get('/secretario', 'SecretarioController@indexSecretario')->name('indexSecretario'); 
-
-Route::get('/solicitacao', 'AlunoController@novaSolicitacao')->name('novaSolicitacao');
-
-Route::get('/professor', 'ProfessorController@indexProfessor')->name('indexProfessor');
-
-Route::post('/salvar', 'AlunoController@salvar')->name('salvar');
-
 Route::get('/sair', 'LoginController@sair')->name('sair');
+
+Route::get('/download{anexo}', 'DownloadController@download')->name('download');
+
+Route::resource('aluno', 'AlunoController');
+
+Route::resource('secretario', 'SecretarioController');
+
+Route::resource('professor', 'ProfessorController');

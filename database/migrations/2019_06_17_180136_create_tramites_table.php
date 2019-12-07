@@ -18,7 +18,7 @@ class CreateTramitesTable extends Migration
             $table->string('id_servidor');
             $table->string('avaliacao');
             $table->string('observacao');
-            $table->date('data');
+            $table->string('data');
             $table->unsignedInteger('id_requerimento');
 
             $table->foreign('id_requerimento')->references('id')->on('requerimentos');
