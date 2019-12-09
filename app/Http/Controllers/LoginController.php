@@ -53,6 +53,8 @@ class LoginController extends Controller
 		}else{
 			return redirect()->to(route('loginForm'));
 		}
+
+		var_dump($sessao);
 		try{
 			if(($sessao['2']) == 'Aluno'){
 				return redirect()->to(route('aluno.index'));
