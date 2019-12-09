@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Requerimento;
+use App\Despacho;
 
 class AlunoController extends Controller
 {
@@ -27,8 +28,10 @@ class AlunoController extends Controller
         include 'CredenciaisAluno.php';
 
         $requerimentos = Requerimento::get()->where('id_aluno', $id);
+
+        $despachos = Despacho::get();
         
-        return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos]);
+        return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos, 'despachos' => $despachos]);
     }
 
     /**

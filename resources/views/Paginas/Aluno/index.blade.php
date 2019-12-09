@@ -21,8 +21,10 @@
 							<td>{{ $requerimento->data }}</td>
 							<td>{{ $requerimento->justificativa }}</td>
 							<td>{{ $requerimento->status }}</td>
-							<td>Detalhe</td>
+							<td><button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalDetalhes-{{ $requerimento->id }}">Detalhe</button></td>
+
 							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEdit-{{ $requerimento->id }}" data-whatever="{{ $requerimento->id }}" data-whateverjustificativa="{{ $requerimento->justificativa }}"><i class="app-menu__icon fa fa-pencil-square-o"></i><span class="app-menu__label"></span></button> </td>
+
 							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalExcl-{{ $requerimento->id }}"><i class="app-menu__icon fa fa-trash"></i><span class="app-menu__label"></span></button> </td>
 						</tbody>
 						<div class="modal fade" id="modalEdit-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -77,6 +79,26 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="modal fade" id="modalDetalhes-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Detalhes da solicitação</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										@foreach($despachos as $despacho)
+											{{ $despacho->avaliacao }}
+										@endforeach
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					@endforeach
 				</table>
 			</div>
