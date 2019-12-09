@@ -33,7 +33,14 @@ class LoginController extends Controller
 
 		$vinculo = $dados->tipo_vinculo;
 
-		$request->session()->put('user', [$matricula, $senha, $vinculo]);
+		if($vinculo != 'Aluno'){
+
+			$categoria = $dados->categoria;
+			
+			$request->session()->put('user', [$matricula, $senha, $vinculo, $categoria]);
+		}else{
+			$request->session()->put('user', [$matricula, $senha, $vinculo]);
+		}
 
 		$sessao = $request->session()->get('user');
 
@@ -50,10 +57,10 @@ class LoginController extends Controller
 			if(($sessao['2']) == 'Aluno'){
 				return redirect()->to(route('aluno.index'));
 
-			}elseif (($sessao['2']) == 'Secretario') {
+			}elseif (($sessao['3']) == 'Secretario') {
 				return redirect()->to(route('secretario.index'));
 
-			}elseif (($sessao['2']) == 'docente') {
+			}elseif (($sessao['3']) == 'docente') {
 				return redirect()->to(route('professor.index'));
 
 			}else{
