@@ -53,7 +53,7 @@ class LoginController extends Controller
 			}elseif (($sessao['2']) == 'Secretario') {
 				return redirect()->to(route('secretario.index'));
 
-			}elseif (($sessao['2']) == 'Docente') {
+			}elseif (($sessao['2']) == 'docente') {
 				return redirect()->to(route('professor.index'));
 
 			}else{

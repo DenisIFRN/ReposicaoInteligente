@@ -12,3 +12,4 @@ $authClient = new SuapClient;
 	$matricula = $dadosServidor->matricula;
 	$foto = $dadosServidor->url_foto_75x100;
 	$vinculo = $dadosServidor->tipo_vinculo;
+	$categoria = $dadosServidor->categoria
