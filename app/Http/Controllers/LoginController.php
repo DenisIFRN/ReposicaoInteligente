@@ -35,8 +35,8 @@ class LoginController extends Controller
 
 		if($vinculo != 'Aluno'){
 
-			$categoria = $dados->categoria;
-			
+			$categoria = $dados->vinculo->categoria;
+
 			$request->session()->put('user', [$matricula, $senha, $vinculo, $categoria]);
 		}else{
 			$request->session()->put('user', [$matricula, $senha, $vinculo]);
