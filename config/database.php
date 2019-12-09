@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 
 return [
-
+    $DATABASE_URL=parse_url("postgres://pfgiexlqkymknn:c4c3935a2b51e1b31a374f6908a9a5b2c0e0056258395a505cc5a3fd1913640b@ec2-174-129-255-76.compute-1.amazonaws.com:5432/d8celnkcvbuvd6");
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -66,11 +66,11 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'ec2-174-129-255-57.compute-1.amazonaws.com'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'dcvbln8e27dfq6'),
-            'username' => env('DB_USERNAME', 'jwqblxsurbjfjl'),
-            'password' => env('DB_PASSWORD', '1537e2002fef94592dc768060947818fd036da6f64c5933a2b6ff8bc707125ae'),
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' => $DATABASE_URL["pass"],
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
