@@ -54,7 +54,7 @@ class AlunoController extends Controller
         $ano = $periodos["ano_letivo"];
         $periodo = $periodos["periodo_letivo"];
 
-        $turmasVirtuais = $authSuap->getTurmasVirtuais(2019, 1);//($ano, $periodo); 
+        $turmasVirtuais = $authSuap->getTurmasVirtuais(2018, 1);//($ano, $periodo); 
 
         $arrayTurmas = array();
         $contTurmas = count($turmasVirtuais);
