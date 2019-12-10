@@ -18,9 +18,9 @@ class ProfessorController extends Controller
     {
         if(Session::has('user')) {
             $sessao = Session::get('user');
-            if($sessao['2'] != 'Docente'){
+            /* if($sessao['2'] != 'Docente'){
                 return redirect()->to(route('loginForm'));
-            }
+            }*/
         }else{
             return redirect()->to(route('loginForm'));
         }
