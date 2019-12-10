@@ -20,7 +20,7 @@
 							<td>{{ $requerimento->justificativa }}</td>
 							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEditStatusProf-{{ $requerimento->id }}">{{ $requerimento->status }}</button></td>
 
-							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEditSecretario-{{ $requerimento->id }}">Avaliar</button> </td>
+							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEditProf-{{ $requerimento->id }}">Avaliar</button> </td>
 						</tbody>
 
 						<div class="modal fade" id="modalEditStatusProf-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,7 +51,7 @@
 							</div>
 						</div>
 
-						<div class="modal fade" id="modalEditSecretario-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="modalEditProf-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
