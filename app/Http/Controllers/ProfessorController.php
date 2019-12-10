@@ -27,7 +27,7 @@ class ProfessorController extends Controller
 
         include 'CredenciaisServidor.php';
 
-        $requerimentos = Requerimento::get()where('id_docente', $id);;
+        $requerimentos = Requerimento::get()->where('id_docente', $id);
         
         return view('Paginas.Professor.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos]);
     }
