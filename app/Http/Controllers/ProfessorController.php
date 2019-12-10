@@ -58,7 +58,7 @@ class ProfessorController extends Controller
         $desp->data_aplicacao = $request->dataAplicacao;
         $desp->data_avaliacao = date("d/m/Y");
         //$desp->id_tramite = $request->id;
-        $desp->id_tramite = 0;
+        //$desp->id_tramite = 0;
 
         $desp->save();
 
