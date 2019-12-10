@@ -98,7 +98,7 @@ class ProfessorController extends Controller
         $stat = $request->status;
 
         $status = Requerimento::find($id)->update(['status' => $stat]);
-        return redirect()->to(route('secretario.index'));
+        return redirect()->to(route('professor.index'));
     }
 
     /**
