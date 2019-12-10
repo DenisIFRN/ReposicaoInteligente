@@ -11,14 +11,6 @@ class SecretarioController extends Controller
 {
     /**
      * Display a listing of the resource.
-
-        DB_CONNECTION=pgsql
-        DB_HOST=ec2-174-129-255-76.compute-1.amazonaws.com
-        DB_PORT=5432
-        DB_DATABASE=d8celnkcvbuvd6
-        DB_USERNAME=pfgiexlqkymknn
-        DB_PASSWORD=c4c3935a2b51e1b31a374f6908a9a5b2c0e0056258395a505cc5a3fd1913640b
-        
      *
      * @return \Illuminate\Http\Response
      */
