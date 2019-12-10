@@ -95,7 +95,8 @@ class AlunoController extends Controller
         if($tipoArquivo == 'application/pdf'){
 
             $anexoName = uniqid(date('HisYmd')).".".$request->anexo->extension();
-            $anex = $request->anexo->storeAs('anexos', $anexoName);
+            //$anex = $request->anexo->storeAs('anexos', $anexoName);
+            $anex = $request->file('anexo')->storeAs('public/anexos', $anexoName);
 
         }else{
             return "Arquivo Inválido"; //Criar modal com essa informação
