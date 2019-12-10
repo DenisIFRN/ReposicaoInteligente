@@ -92,8 +92,10 @@ class AlunoController extends Controller
 
         $tipoArquivo = $request->anexo->getMimeType();
 
+
         if($tipoArquivo == 'application/pdf'){
 
+            var_dump([$tipoArquivo, $request->anexo]);
             $anexoName = uniqid(date('HisYmd')).".".$request->anexo->extension();
             //$anex = $request->anexo->storeAs('anexos', $anexoName);
             $anex = $request->file('anexo')->move(public_path('anexos'), $anexoName);
