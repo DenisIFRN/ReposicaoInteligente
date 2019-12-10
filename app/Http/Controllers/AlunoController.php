@@ -18,9 +18,9 @@ class AlunoController extends Controller
     {
         if(Session::has('user')) {
             $sessao = Session::get('user');
-            if($sessao['2'] != 'Aluno'){
+            /* if($sessao['2'] != 'Aluno'){
                 return redirect()->to(route('loginForm'));
-            }
+            } */
         }else{
             return redirect()->to(route('loginForm'));
         }
@@ -43,9 +43,9 @@ class AlunoController extends Controller
     {
         if(Session::has('user')) {
             $sessao = Session::get('user');
-            if($sessao['2'] != 'Aluno'){
+            /* if($sessao['2'] != 'Aluno'){
                 return redirect()->to(route('loginForm'));
-            }
+            } */
         }else{
             return redirect()->to(route('loginForm'));
         }

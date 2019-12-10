@@ -33,7 +33,7 @@ class LoginController extends Controller
 
 		$vinculo = $dados->tipo_vinculo;
 
-		if($vinculo != 'Aluno'){
+		if($vinculo != "Aluno"){
 
 			$categoria = $dados->vinculo->categoria;
 
