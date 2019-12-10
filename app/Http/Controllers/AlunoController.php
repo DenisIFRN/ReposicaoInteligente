@@ -96,7 +96,7 @@ class AlunoController extends Controller
 
             $anexoName = uniqid(date('HisYmd')).".".$request->anexo->extension();
             //$anex = $request->anexo->storeAs('anexos', $anexoName);
-            $anex = $request->file('anexo')->storeAs('public/anexos', $anexoName);
+            $anex = $request->file('anexo')->move('public/anexos', $anexoName);
 
         }else{
             return "Arquivo Inválido"; //Criar modal com essa informação
