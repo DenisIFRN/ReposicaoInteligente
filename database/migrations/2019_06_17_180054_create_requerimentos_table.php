@@ -22,7 +22,6 @@ class CreateRequerimentosTable extends Migration
             $table->text('justificativa');
             $table->string('anexo');
             $table->string('data');
-            $table->string('status')->default('Aguardando_Avaliacao');
         });
     }
 

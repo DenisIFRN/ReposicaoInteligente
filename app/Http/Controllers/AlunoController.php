@@ -30,8 +30,10 @@ class AlunoController extends Controller
         $requerimentos = Requerimento::get()->where('id_aluno', $id);
 
         $despachos = Despacho::get();
+
+        $nDespachos = count($despachos);
         
-        return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos, 'despachos' => $despachos]);
+        return view('Paginas.Aluno.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos, 'despachos' => $despachos, 'nDespachos' => $nDespachos]);
     }
 
     /**
@@ -97,9 +99,9 @@ class AlunoController extends Controller
 
            
             $anexoName = uniqid(date('HisYmd')).".".$request->anexo->extension();
-            $anex = $request->anexo->storeAs('anexos', $anexoName);
-            //$request->file('anexo')->move(public_path('anexos'), $anexoName);
-            //eturn var_dump($request->file('anexo'));
+            //$anex = $request->anexo->storeAs('anexos', $anexoName);
+            $request->file('anexo')->move(public_path('anexos'), $anexoName);
+            return var_dump($request->file('anexo'));
 
         }else{
             return "Arquivo Inválido"; //Criar modal com essa informação
@@ -113,9 +115,18 @@ class AlunoController extends Controller
         $req->justificativa = $request->justificativa;
         $req->anexo = $anexoName;
         $req->data = date("d/m/Y");
-        $req->status = "Aguardando avaliação";
 
         $req->save();
+
+        $tram = new Tramite;
+        $tram->avaliacao = "Aguardando avaliação";
+
+        $tram->save();
+
+        $desp = new Despacho;
+        $desp->avaliacao = "Aguardando avaliação";
+
+        $desp->save();
 
         return redirect()->to(route('aluno.index'));
     }

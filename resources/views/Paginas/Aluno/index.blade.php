@@ -10,7 +10,6 @@
 						<tr>
 							<th scope="col">Data da Solicitação</th>
 					      	<th scope="col">Justificativa</th>
-					      	<th scope="col">Situação</th>
 					      	<th scope="col">Detalhar</th>
 					      	<th scope="col">Editar</th>
 					      	<th scope="col">Excluir</th>
@@ -21,7 +20,7 @@
 							<td>{{ $requerimento->data }}</td>
 							<td>{{ $requerimento->justificativa }}</td>
 							<td>{{ $requerimento->status }}</td>
-							<td><button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalDetalhes-{{ $requerimento->id }}">Detalhe</button></td>
+							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalDetalh-{{ $requerimento->id }}">Detalhe</button> </td>
 
 							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEdit-{{ $requerimento->id }}" data-whatever="{{ $requerimento->id }}" data-whateverjustificativa="{{ $requerimento->justificativa }}"><i class="app-menu__icon fa fa-pencil-square-o"></i><span class="app-menu__label"></span></button> </td>
 
@@ -80,25 +79,41 @@
 							</div>
 						</div>
 
-						<div class="modal fade" id="modalDetalhes-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="modalDetalh-{{ $requerimento->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Detalhes da solicitação</h5>
+										<h5 class="modal-title" id="exampleModalLabel">Dados da solicitação</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									</div>
 									<div class="modal-body">
-										@foreach($despachos as $despacho)
-											{{ $despacho->avaliacao }}
-										@endforeach
+										@for ($i = 0; $i < $nDespachos; $i++)
+											@for($i = 0; $i < $nDespachos; $i++)
+												@if($requerimento->id == $despachos[$i]['id_tramite'])
+													<label for="recipient-name" class="col-form-label"><b>Id docente:</b></label>
+													{{ $despachos[$i]->id_docente }} <br>
+
+													<label for="recipient-name" class="col-form-label"><b>Avaliação:</b></label>
+													{{ $despachos[$i]->avaliacao }} <br>
+
+													<label for="recipient-name" class="col-form-label"><b>Observação:</b></label>
+													{{ $despachos[$i]->observacao }} <br>
+
+													<label for="recipient-name" class="col-form-label"><b>Local da prova:</b></label>
+													{{ $despachos[$i]->local }} <br>
+
+													<label for="recipient-name" class="col-form-label"><b>Data da aplicação:</b></label>
+													{{ $despachos[$i]->data_aplicacao }} <br>
+											    @endif
+											@endfor
+										@endfor
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+							            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
 									</div>
 								</div>
 							</div>
-						</div>
-
+						</div>	
 					@endforeach
 				</table>
 			</div>

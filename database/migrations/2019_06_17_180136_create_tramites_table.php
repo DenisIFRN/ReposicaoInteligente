@@ -15,11 +15,11 @@ class CreateTramitesTable extends Migration
     {
         Schema::create('tramites', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_servidor');
-            $table->string('avaliacao');
-            $table->string('observacao');
-            $table->string('data');
-            $table->unsignedInteger('id_requerimento');
+            $table->string('id_servidor')->nullable();
+            $table->string('avaliacao')->nullable();
+            $table->string('observacao')->nullable();
+            $table->string('data')->nullable();
+            $table->unsignedInteger('id_requerimento')->nullable();
 
             $table->foreign('id_requerimento')->references('id')->on('requerimentos');
         });

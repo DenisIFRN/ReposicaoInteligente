@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Requerimento;
+use App\Tramite;
 use App\Despacho;
 
 class ProfessorController extends Controller
@@ -27,9 +28,13 @@ class ProfessorController extends Controller
 
         include 'CredenciaisServidor.php';
 
-        $requerimentos = Requerimento::get()->where('id_docente', $matricula);
+        $requerimentos = Requerimento::get();
+
+        $tramites = Tramite::get();
+
+        $nTramites = count($tramites);
         
-        return view('Paginas.Professor.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos]);
+        return view('Paginas.Professor.index', ['id'=>$id, 'nome'=>$nome, 'matricula'=>$matricula,'foto'=>$foto, 'vinculo'=>$vinculo, 'requerimentos' => $requerimentos, 'tramites'=>$tramites, 'nTramites'=>$nTramites]);
     }
 
     /**
@@ -50,19 +55,7 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        $desp = new Despacho;
-        $desp->id_docente = $request->idDocente;
-        $desp->avaliacao = $request->avaliacao;
-        $desp->observacao = $request->observacao;
-        $desp->local = $request->local;
-        $desp->data_aplicacao = $request->dataAplicacao;
-        $desp->data_avaliacao = date("d/m/Y");
-        //$desp->id_tramite = $request->id;
-        //$desp->id_tramite = 0;
-
-        $desp->save();
-
-        return redirect()->to(route('professor.index'));
+        //
     }
 
     /**
@@ -96,9 +89,15 @@ class ProfessorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $stat = $request->status;
+        $id_docente = $request->idDocente;
+        $avaliacao = $request->avaliacao;
+        $observacao = $request->observacao;
+        $local = $request->local;
+        $data_aplicacao = $request->dataAplicacao;
+        $data_avaliacao = date("d/m/Y");
 
-        $status = Requerimento::find($id)->update(['status' => $stat]);
+        $atualiza = Despacho::find($id)->update(['id_docente' => $id_docente, 'avaliacao' => $avaliacao, 'observacao' => $observacao, 'local' => $local, 'data_aplicacao' => $data_aplicacao, 'data_avaliacao' => $data_avaliacao, 'id_tramite' => $id]);
+        
         return redirect()->to(route('professor.index'));
     }
 

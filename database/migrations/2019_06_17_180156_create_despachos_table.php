@@ -15,12 +15,12 @@ class CreateDespachosTable extends Migration
     {
         Schema::create('despachos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_docente');
-            $table->string('avaliacao');
-            $table->string('observacao');
-            $table->string('local');
-            $table->string('data_aplicacao');
-            $table->string('data_avaliacao');
+            $table->string('id_docente')->nullable();
+            $table->string('avaliacao')->nullable();
+            $table->string('observacao')->nullable();
+            $table->string('local')->nullable();
+            $table->string('data_aplicacao')->nullable();
+            $table->string('data_avaliacao')->nullable();
             $table->unsignedInteger('id_tramite')->nullable();
 
             $table->foreign('id_tramite')->references('id')->on('tramites');

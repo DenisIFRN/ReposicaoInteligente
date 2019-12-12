@@ -50,16 +50,7 @@ class SecretarioController extends Controller
      */
     public function store(Request $request)
     {
-        $tram = new Tramite;
-        $tram->id_servidor = $request->idSecretario;
-        $tram->avaliacao = $request->status;
-        $tram->observacao = $request->observacao;
-        $tram->data = date("d/m/Y");
-        $tram->id_requerimento = $request->id;
-
-        $tram->save();
-
-        return redirect()->to(route('secretario.index'));
+        //
     }
 
     /**
@@ -93,9 +84,13 @@ class SecretarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $stat = $request->status;
+        $id_secretario = $request->idSecretario;
+        $avaliacao = $request->status;
+        $observacao = $request->observacao;
+        $data = date("d/m/Y");
 
-        $status = Requerimento::find($id)->update(['status' => $stat]);
+        $atualiza = Tramite::find($id)->update(['id_servidor' => $id_secretario, 'avaliacao' => $avaliacao, 'observacao' => $observacao, 'data' => $data, 'id_requerimento' => $id]);
+
         return redirect()->to(route('secretario.index'));
     }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Requerimento extends Model
 {
-	protected $fillable = ['justificativa', 'anexo','observacao', 'status'];
+	protected $fillable = ['justificativa', 'anexo'];
 
     public $timestamps = false;
 
