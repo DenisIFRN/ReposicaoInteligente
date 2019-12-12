@@ -28,7 +28,7 @@ class ProfessorController extends Controller
 
         include 'CredenciaisServidor.php';
 
-        $requerimentos = Requerimento::get();
+        $requerimentos = Requerimento::get();//->where('id_docente', $matricula);
 
         $tramites = Tramite::get();
 
