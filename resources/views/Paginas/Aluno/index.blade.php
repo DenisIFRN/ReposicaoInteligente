@@ -19,7 +19,6 @@
 						<tbody>
 							<td>{{ $requerimento->data }}</td>
 							<td>{{ $requerimento->justificativa }}</td>
-							<td>{{ $requerimento->status }}</td>
 							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalDetalh-{{ $requerimento->id }}">Detalhe</button> </td>
 
 							<td> <button type="button" class="btn btn-link collapsed" data-toggle="modal" data-target="#modalEdit-{{ $requerimento->id }}" data-whatever="{{ $requerimento->id }}" data-whateverjustificativa="{{ $requerimento->justificativa }}"><i class="app-menu__icon fa fa-pencil-square-o"></i><span class="app-menu__label"></span></button> </td>
