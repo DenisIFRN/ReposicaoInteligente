@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Requerimento;
+use App\Tramite;
 use App\Despacho;
 
 class AlunoController extends Controller
