@@ -18,10 +18,22 @@
 		</div>
 		
 		<ul class="app-menu">
-			<li>
-				<a class="app-menu__item" href="{{ route('aluno.index') }}"><i class="app-menu__icon fa fa-home"></i>
-				<span class="app-menu__label">Início</span></a>
-			</li>
+			@if($vinculo == 'Aluno')
+				<li>
+					<a class="app-menu__item" href="{{ route('aluno.index') }}"><i class="app-menu__icon fa fa-home"></i>
+					<span class="app-menu__label">Início</span></a>
+				</li>
+			@elseif($vinculo == 'Secretario')
+				<li>
+					<a class="app-menu__item" href="{{ route('secretario.index') }}"><i class="app-menu__icon fa fa-home"></i>
+					<span class="app-menu__label">Início</span></a>
+				</li>
+			@else
+				<li>
+					<a class="app-menu__item" href="{{ route('professor.index') }}"><i class="app-menu__icon fa fa-home"></i>
+					<span class="app-menu__label">Início</span></a>
+				</li>
+			@endif
 			
 			@if($vinculo == 'Aluno')
 				<li>
