@@ -188,7 +188,9 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        $exclui = Requerimento::find($id)->delete();
+        $excluiReq = Requerimento::find($id)->delete();
+        $excluiTram = Tramite::find($id)->delete();
+        $excluiDesp = Despacho::find($id)->delete();
         return redirect()->to(route('aluno.index'));
     }
 }
