@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\Requerimento;
 use App\Tramite;
 use App\Despacho;
@@ -93,17 +95,16 @@ class AlunoController extends Controller
             }
         }
 
+        $anexo = $request->anexo;
         $tipoArquivo = $request->anexo->getMimeType();
 
 
         if($tipoArquivo == 'application/pdf'){
 
-           
             $anexoName = uniqid(date('HisYmd')).".".$request->anexo->extension();
-            //$anex = $request->anexo->storeAs('anexos', $anexoName);
-            $request->file('anexo')->move(public_path('anexos'), $anexoName);
-            //return var_dump($request->file('anexo'));
 
+            $anex = Storage::putFileAs('anexos', new File($anexo), $anexoName);
+            
         }else{
             return "Arquivo Inválido"; //Criar modal com essa informação
         }
