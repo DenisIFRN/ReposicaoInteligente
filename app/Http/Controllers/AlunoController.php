@@ -164,13 +164,16 @@ class AlunoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $anexo = $request->anexo;
         $tipoArquivo = $request->anexo->getMimeType();
+
 
         if($tipoArquivo == 'application/pdf'){
 
             $anexoName = uniqid(date('HisYmd')).".".$request->anexo->extension();
-            $anex = $request->anexo->storeAs('anexos', $anexoName);
 
+            $anex = Storage::putFileAs('anexos', new File($anexo), $anexoName);
+            
         }else{
             return "Arquivo Inválido"; //Criar modal com essa informação
         }
@@ -180,7 +183,7 @@ class AlunoController extends Controller
         $atual = Requerimento::find($id)->update(['justificativa'=>$just, 'anexo'=>$anexoName]);
         return redirect()->to(route('aluno.index'));
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
