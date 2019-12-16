@@ -35,7 +35,12 @@
 				</li>
 			@endif
 			
-			
+			@if($vinculo == 'Aluno')
+				<li>
+					<a class="app-menu__item" href="{{ route('aluno.create') }}"><i class="app-menu__icon fa fa-plus"></i>
+					<span class="app-menu__label">Solicitar Reposição</span></a>
+				</li>
+			@endif
 			
 			<li>
 				<a class="app-menu__item text-danger" href="{{ url('sair') }}"><i class="app-menu__icon fa fa-sign-out"></i>

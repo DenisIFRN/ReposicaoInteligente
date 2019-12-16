@@ -7,7 +7,7 @@
 		<div id="accordion">
 			<div class="tile">
 				<div class="table-responsive">
-					<h3>Solicitações Recebidas (Professor)</h3> <br>
+					<h3>Solicitações Recebidas</h3> <br>
 					<table class="table table-hover">
 						<thead>
 							<tr>
