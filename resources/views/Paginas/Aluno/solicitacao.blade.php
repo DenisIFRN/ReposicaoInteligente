@@ -1,5 +1,7 @@
 @extends('Visual.visualPaginas')
 
+@section('subtitle', 'Solicitar Reposição')
+
 @section('conteudo')
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<main class="app-content">

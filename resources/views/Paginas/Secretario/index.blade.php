@@ -1,5 +1,7 @@
 @extends('Visual.visualPaginas')
 
+@section('subtitle', 'Index Secretário')
+
 @section('conteudo')
 	<main class="app-content">
 		<div id="accordion">
