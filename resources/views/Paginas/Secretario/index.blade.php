@@ -50,7 +50,6 @@
 
 												<label for="recipient-name" class="col-form-label"><b>Status:</b></label>
 												<select class="form-control" id="exampleFormControlSelect" name="status">
-													<option value="Aguardando_avaliacao">Aguardando avaliação</option>
 													<option value="Deferido">Deferido</option>
 													<option value="Indeferido">Indeferido</option>
 												</select>
